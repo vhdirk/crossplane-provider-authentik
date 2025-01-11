@@ -21,6 +21,8 @@ type ProviderSAMLInitParameters struct {
 	// (String)
 	FriendlyName *string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -39,6 +41,8 @@ type ProviderSAMLObservation struct {
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -55,6 +59,9 @@ type ProviderSAMLParameters struct {
 	// (String)
 	// +kubebuilder:validation:Optional
 	FriendlyName *string `json:"friendlyName,omitempty" tf:"friendly_name,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
 
 	// (String)
 	// +kubebuilder:validation:Optional

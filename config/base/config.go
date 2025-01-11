@@ -49,34 +49,34 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = shortGroup
 		r.Kind = "Flow"
 
-		// Add a field override for the "slug" field
-		r.References["slug"] = config.Reference{
-			Type: "string",
-		}
+		// // Add a field override for the "slug" field
+		// r.References["slug"] = config.Reference{
+		// 	Type: "string",
+		// }
 
-		// // Optionally, you can set it as optional or computed if required
-		// r.UseFieldOverrides(map[string]config.FieldOverride{
-		// 	"slug": {
-		// 		TerraformFieldSchema: &schema.Schema{
-		// 			Type:        schema.TypeString,
-		// 			Optional:    true,
-		// 			Computed:    true,
-		// 			Description: "Unique identifier for the flow.",
-		// 		},
-		// 	},
-		// })
+		// // // Optionally, you can set it as optional or computed if required
+		// // r.UseFieldOverrides(map[string]config.FieldOverride{
+		// // 	"slug": {
+		// // 		TerraformFieldSchema: &schema.Schema{
+		// // 			Type:        schema.TypeString,
+		// // 			Optional:    true,
+		// // 			Computed:    true,
+		// // 			Description: "Unique identifier for the flow.",
+		// // 		},
+		// // 	},
+		// // })
 
-		r.TerraformResource.Schema["slug"] = &schema.Schema{
-			Type:        schema.TypeString,
-			Optional:    true,
-			Computed:    false,
-			Description: "Unique identifier for the flow.",
-		}
+		// r.TerraformResource.Schema["slug"] = &schema.Schema{
+		// 	Type:        schema.TypeString,
+		// 	Optional:    true,
+		// 	Computed:    false,
+		// 	Description: "Unique identifier for the flow.",
+		// }
 
-		if s, ok := r.TerraformResource.Schema["slug"]; ok {
-			s.Optional = false
-			s.Computed = true
-		}
+		// if s, ok := r.TerraformResource.Schema["slug"]; ok {
+		// 	s.Optional = false
+		// 	s.Computed = true
+		// }
 
 	})
 	p.AddResourceConfigurator("authentik_flow_stage_binding", func(r *config.Resource) {

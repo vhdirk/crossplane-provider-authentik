@@ -16,6 +16,8 @@ import (
 type ProviderRACInitParameters struct {
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// JSON format expected. Use jsonencode() to pass objects. Defaults to `{}`.
@@ -27,6 +29,8 @@ type ProviderRACObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// JSON format expected. Use jsonencode() to pass objects. Defaults to `{}`.
@@ -37,6 +41,9 @@ type ProviderRACParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`

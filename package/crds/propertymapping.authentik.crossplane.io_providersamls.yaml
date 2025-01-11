@@ -79,6 +79,8 @@ spec:
                   friendlyName:
                     description: (String)
                     type: string
+                  managed:
+                    type: string
                   name:
                     description: (String)
                     type: string
@@ -104,6 +106,8 @@ spec:
                     type: string
                   friendlyName:
                     description: (String)
+                    type: string
+                  managed:
                     type: string
                   name:
                     description: (String)
@@ -305,6 +309,8 @@ spec:
                     type: string
                   id:
                     description: (String) The ID of this resource.
+                    type: string
+                  managed:
                     type: string
                   name:
                     description: (String)

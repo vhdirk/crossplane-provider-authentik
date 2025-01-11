@@ -1091,6 +1091,11 @@ func (in *ProviderRACInitParameters) DeepCopyInto(out *ProviderRACInitParameters
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1158,6 +1163,11 @@ func (in *ProviderRACObservation) DeepCopyInto(out *ProviderRACObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1185,6 +1195,11 @@ func (in *ProviderRACParameters) DeepCopyInto(out *ProviderRACParameters) {
 	*out = *in
 	if in.Expression != nil {
 		in, out := &in.Expression, &out.Expression
+		*out = new(string)
+		**out = **in
+	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
 		*out = new(string)
 		**out = **in
 	}
@@ -1280,6 +1295,11 @@ func (in *ProviderRadiusInitParameters) DeepCopyInto(out *ProviderRadiusInitPara
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1342,6 +1362,11 @@ func (in *ProviderRadiusObservation) DeepCopyInto(out *ProviderRadiusObservation
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1364,6 +1389,11 @@ func (in *ProviderRadiusParameters) DeepCopyInto(out *ProviderRadiusParameters) 
 	*out = *in
 	if in.Expression != nil {
 		in, out := &in.Expression, &out.Expression
+		*out = new(string)
+		**out = **in
+	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
 		*out = new(string)
 		**out = **in
 	}
@@ -1459,6 +1489,11 @@ func (in *ProviderSAMLInitParameters) DeepCopyInto(out *ProviderSAMLInitParamete
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1531,6 +1566,11 @@ func (in *ProviderSAMLObservation) DeepCopyInto(out *ProviderSAMLObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1563,6 +1603,11 @@ func (in *ProviderSAMLParameters) DeepCopyInto(out *ProviderSAMLParameters) {
 	}
 	if in.FriendlyName != nil {
 		in, out := &in.FriendlyName, &out.FriendlyName
+		*out = new(string)
+		**out = **in
+	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
 		*out = new(string)
 		**out = **in
 	}
@@ -1658,6 +1703,11 @@ func (in *ProviderSCIMInitParameters) DeepCopyInto(out *ProviderSCIMInitParamete
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1720,6 +1770,11 @@ func (in *ProviderSCIMObservation) DeepCopyInto(out *ProviderSCIMObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1742,6 +1797,11 @@ func (in *ProviderSCIMParameters) DeepCopyInto(out *ProviderSCIMParameters) {
 	*out = *in
 	if in.Expression != nil {
 		in, out := &in.Expression, &out.Expression
+		*out = new(string)
+		**out = **in
+	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
 		*out = new(string)
 		**out = **in
 	}
@@ -1837,6 +1897,11 @@ func (in *ProviderScopeInitParameters) DeepCopyInto(out *ProviderScopeInitParame
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1909,6 +1974,11 @@ func (in *ProviderScopeObservation) DeepCopyInto(out *ProviderScopeObservation) 
 		*out = new(string)
 		**out = **in
 	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
+		*out = new(string)
+		**out = **in
+	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)
@@ -1941,6 +2011,11 @@ func (in *ProviderScopeParameters) DeepCopyInto(out *ProviderScopeParameters) {
 	}
 	if in.Expression != nil {
 		in, out := &in.Expression, &out.Expression
+		*out = new(string)
+		**out = **in
+	}
+	if in.Managed != nil {
+		in, out := &in.Managed, &out.Managed
 		*out = new(string)
 		**out = **in
 	}
