@@ -19,9 +19,13 @@
             go
             gopls
             golint
+            gotools
             delve
 
             gnumake
+            unzip
+
+            crossplane-cli
           ];
         };
       }
