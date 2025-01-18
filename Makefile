@@ -3,6 +3,7 @@
 
 PROJECT_NAME ?= provider-authentik
 PROJECT_REPO ?= github.com/vhdirk/crossplane-$(PROJECT_NAME)
+
 export TERRAFORM_VERSION ?= 1.5.7
 
 # Do not allow a version of terraform greater than 1.5.x, due to versions 1.6+ being
@@ -54,9 +55,9 @@ GO_SUBDIRS += cmd internal apis
 # Setup Kubernetes tools
 
 KIND_VERSION = v0.15.0
-UP_VERSION = v0.36.2
+UP_VERSION = v0.28.0
 UP_CHANNEL = stable
-UPTEST_VERSION = v1.2.0
+UPTEST_VERSION = v0.5.0
 -include build/makelib/k8s_tools.mk
 
 # ====================================================================================
@@ -170,7 +171,7 @@ run: go.build
 
 # ====================================================================================
 # End to End Testing
-CROSSPLANE_VERSION = 1.16.0
+CROSSPLANE_VERSION = 1.18.2
 CROSSPLANE_NAMESPACE = upbound-system
 -include build/makelib/local.xpkg.mk
 -include build/makelib/controlplane.mk
