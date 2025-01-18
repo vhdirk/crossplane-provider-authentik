@@ -9,12 +9,14 @@ generation tools and exposes XRM-conformant managed resources for the
 
 Install the provider by using the following command after changing the image tag
 to the [latest release](https://marketplace.upbound.io/providers/vhdirk/provider-authentik):
-```
+
+```sh
 up ctp provider install xpkg.upbound.io/vhdirk/provider-authentik:v0.2.0
 ```
 
 Alternatively, you can use declarative installation:
-```
+
+```sh
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
@@ -32,25 +34,26 @@ You can see the API reference [here](https://doc.crds.dev/github.com/vhdirk/cros
 ## Developing
 
 Run code-generation pipeline:
-```console
+
+```sh
 go run cmd/generator/main.go "$PWD"
 ```
 
 Run against a Kubernetes cluster:
 
-```console
+```sh
 make run
 ```
 
 Build, push, and install:
 
-```console
+```sh
 make all
 ```
 
 Build binary:
 
-```console
+```sh
 make build
 ```
 

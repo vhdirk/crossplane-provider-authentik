@@ -27,6 +27,7 @@
             golint
             gotools
             delve
+            golangci-lint
 
             gnumake
             unzip
