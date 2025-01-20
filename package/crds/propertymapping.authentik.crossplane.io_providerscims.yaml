@@ -74,8 +74,6 @@ spec:
                 properties:
                   expression:
                     type: string
-                  managed:
-                    type: string
                   name:
                     type: string
                 type: object
@@ -93,8 +91,6 @@ spec:
                   autoscaler.
                 properties:
                   expression:
-                    type: string
-                  managed:
                     type: string
                   name:
                     type: string
@@ -283,8 +279,6 @@ spec:
                   expression:
                     type: string
                   id:
-                    type: string
-                  managed:
                     type: string
                   name:
                     type: string

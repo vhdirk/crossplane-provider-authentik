@@ -16,8 +16,6 @@ import (
 type ProviderRadiusInitParameters struct {
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
-	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
-
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -26,8 +24,6 @@ type ProviderRadiusObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
-
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -35,9 +31,6 @@ type ProviderRadiusParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`

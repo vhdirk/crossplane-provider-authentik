@@ -74,8 +74,6 @@ spec:
                 properties:
                   expression:
                     type: string
-                  managed:
-                    type: string
                   name:
                     type: string
                   settings:
@@ -97,8 +95,6 @@ spec:
                   autoscaler.
                 properties:
                   expression:
-                    type: string
-                  managed:
                     type: string
                   name:
                     type: string
@@ -274,6 +270,11 @@ spec:
             required:
             - forProvider
             type: object
+            x-kubernetes-validations:
+            - message: spec.forProvider.name is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.name)
+                || (has(self.initProvider) && has(self.initProvider.name))'
           status:
             description: ProviderRACStatus defines the observed state of ProviderRAC.
             properties:
@@ -282,8 +283,6 @@ spec:
                   expression:
                     type: string
                   id:
-                    type: string
-                  managed:
                     type: string
                   name:
                     type: string
