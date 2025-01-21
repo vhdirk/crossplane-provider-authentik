@@ -42,11 +42,11 @@ func Configure(p *config.Provider) {
 		// 	IgnoredFields: []string{"protocol_provider"},
 		// }
 
-		r.References["protocol_provider"] = config.Reference{
-			// Since any provider type could be referenced, pick any one
-			TerraformName: "authentik_provider_oauth2",
-			Extractor:     `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
-		}
+		// r.References["protocol_provider"] = config.Reference{
+		// 	// Since any provider type could be referenced, pick any one
+		// 	TerraformName: "authentik_provider_oauth2",
+		// 	Extractor:     `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
+		// }
 
 	})
 	p.AddResourceConfigurator("authentik_outpost", func(r *config.Resource) {
