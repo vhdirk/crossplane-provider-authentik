@@ -166,12 +166,6 @@ func Configure(p *config.Provider) {
 			Computed: false,
 		}
 
-		// r.TerraformResource.Schema["managed"] = &schema.Schema{
-		// 	Type:     schema.TypeString,
-		// 	Optional: true,
-		// 	Computed: false,
-		// }
-
 		// r.TerraformResource.Schema["name"] = &schema.Schema{
 		// 	Type:     schema.TypeString,
 		// 	Optional: true,
@@ -202,12 +196,6 @@ func Configure(p *config.Provider) {
 			Computed: false,
 		}
 
-		// r.TerraformResource.Schema["managed"] = &schema.Schema{
-		// 	Type:     schema.TypeString,
-		// 	Optional: true,
-		// 	Computed: false,
-		// }
-
 		// r.InitializerFns = append(r.InitializerFns, MappingProviderInitializer([]string{"name", "saml_name", "friendly_name", "expression"}))
 	})
 
@@ -220,12 +208,6 @@ func Configure(p *config.Provider) {
 			Computed: false,
 		}
 
-		// r.TerraformResource.Schema["managed"] = &schema.Schema{
-		// 	Type:     schema.TypeString,
-		// 	Optional: true,
-		// 	Computed: false,
-		// }
-
 		// r.InitializerFns = append(r.InitializerFns, MappingProviderInitializer([]string{"name", "expression"}))
 	})
 	p.AddResourceConfigurator("authentik_property_mapping_provider_scope", func(r *config.Resource) {
@@ -237,13 +219,12 @@ func Configure(p *config.Provider) {
 			Computed: false,
 		}
 
-		// r.TerraformResource.Schema["managed"] = &schema.Schema{
-		// 	Type:     schema.TypeString,
-		// 	Optional: true,
-		// 	Computed: false,
-		// }
-
-		// r.InitializerFns = append(r.InitializerFns, MappingProviderInitializer([]string{"name", "scope_name", "description", "expression"}))
+		for _, field := range []string{"name", "scope_name", "description", "expression"} {
+			if s, ok := r.TerraformResource.Schema[field]; ok {
+				s.Optional = true
+				s.Computed = false
+			}
+		}
 	})
 
 	p.AddResourceConfigurator("authentik_property_mapping_source_kerberos", func(r *config.Resource) {
