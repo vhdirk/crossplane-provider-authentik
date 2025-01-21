@@ -21,6 +21,8 @@ type ProviderScopeInitParameters struct {
 	// (String)
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -39,6 +41,8 @@ type ProviderScopeObservation struct {
 	// (String) The ID of this resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
+
 	// (String)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -55,6 +59,9 @@ type ProviderScopeParameters struct {
 	// (String)
 	// +kubebuilder:validation:Optional
 	Expression *string `json:"expression,omitempty" tf:"expression,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	Managed *string `json:"managed,omitempty" tf:"managed,omitempty"`
 
 	// (String)
 	// +kubebuilder:validation:Optional

@@ -5,6 +5,7 @@ import (
 
 	"github.com/crossplane/crossplane-runtime/pkg/fieldpath"
 	"github.com/crossplane/upjet/pkg/config"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 const shortGroup = "propertymapping"
@@ -138,14 +139,32 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_property_mapping_provider_google_workspace", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderGoogleWorkspace"
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
+
 	})
 	p.AddResourceConfigurator("authentik_property_mapping_provider_microsoft_entra", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderMicrosoftEntra"
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
+
 	})
 	p.AddResourceConfigurator("authentik_property_mapping_provider_rac", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderRAC"
+
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
 
 		// r.TerraformResource.Schema["managed"] = &schema.Schema{
 		// 	Type:     schema.TypeString,
@@ -165,11 +184,11 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderRadius"
 
-		// r.TerraformResource.Schema["managed"] = &schema.Schema{
-		// 	Type:     schema.TypeString,
-		// 	Optional: true,
-		// 	Computed: false,
-		// }
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
 
 		// r.InitializerFns = append(r.InitializerFns, MappingProviderInitializer([]string{"name", "settings", "expression"}))
 
@@ -177,6 +196,11 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_property_mapping_provider_saml", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderSAML"
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
 
 		// r.TerraformResource.Schema["managed"] = &schema.Schema{
 		// 	Type:     schema.TypeString,
@@ -190,6 +214,11 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_property_mapping_provider_scim", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderSCIM"
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
 
 		// r.TerraformResource.Schema["managed"] = &schema.Schema{
 		// 	Type:     schema.TypeString,
@@ -202,6 +231,11 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_property_mapping_provider_scope", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "ProviderScope"
+		r.TerraformResource.Schema["managed"] = &schema.Schema{
+			Type:     schema.TypeString,
+			Optional: true,
+			Computed: false,
+		}
 
 		// r.TerraformResource.Schema["managed"] = &schema.Schema{
 		// 	Type:     schema.TypeString,
