@@ -1,11 +1,17 @@
 package propertymapping
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
 
 	"github.com/crossplane/crossplane-runtime/pkg/fieldpath"
+	"github.com/crossplane/crossplane-runtime/pkg/reconciler/managed"
+	xpresource "github.com/crossplane/crossplane-runtime/pkg/resource"
 	"github.com/crossplane/upjet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
+	"github.com/pkg/errors"
+	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 const shortGroup = "propertymapping"
@@ -45,58 +51,61 @@ var HasField = func(paved *fieldpath.Paved, path string, defaultValue any) (bool
 var forProviderField = func(field string) string {
 	return fmt.Sprintf("spec.forProvider.%s", field)
 }
+var statusField = func(field string) string {
+	return fmt.Sprintf("status.%s", field)
+}
 
-// var MappingProviderInitializer = func(conflictsWith []string) config.NewInitializerFn {
-// 	return func(client client.Client) managed.Initializer {
-// 		return managed.InitializerFn(func(ctx context.Context, mg xpresource.Managed) error {
+var MappingProviderInitializer = func(conflictsWith []string) config.NewInitializerFn {
+	return func(client client.Client) managed.Initializer {
+		return managed.InitializerFn(func(ctx context.Context, mg xpresource.Managed) error {
 
-// 			paved, err := fieldpath.PaveObject(mg)
-// 			if err != nil {
-// 				return errors.Wrap(err, "cannot pave object")
-// 			}
+			paved, err := fieldpath.PaveObject(mg)
+			if err != nil {
+				return errors.Wrap(err, "cannot pave object")
+			}
 
-// 			managedFieldPath := forProviderField("managed")
-// 			hasManaged, err := HasField(paved, managedFieldPath, "")
-// 			if err != nil {
-// 				return errors.Wrapf(err, "cannot unmarshal field 'managed'")
-// 			}
+			managedFieldPath := forProviderField("managed")
+			hasManaged, err := HasField(paved, managedFieldPath, "")
+			if err != nil {
+				return errors.Wrapf(err, "cannot unmarshal field 'managed'")
+			}
 
-// 			for _, fieldName := range conflictsWith {
-// 				fieldPath := forProviderField(fieldName)
-// 				hasField, err := HasField(paved, fieldPath, "")
-// 				if err != nil {
-// 					return errors.Wrapf(err, "cannot unmarshal field '%s'", fieldName)
-// 				}
+			for _, fieldName := range conflictsWith {
+				fieldPath := forProviderField(fieldName)
+				hasField, err := HasField(paved, fieldPath, "")
+				if err != nil {
+					return errors.Wrapf(err, "cannot unmarshal field '%s'", fieldName)
+				}
 
-// 				if hasManaged && hasField {
-// 					return errors.New("The field '%s' is mutually exclusive with 'managed'")
-// 				}
-// 			}
+				if hasManaged && hasField {
+					return errors.New("The field '%s' is mutually exclusive with 'managed'")
+				}
+			}
 
-// 			if hasManaged {
-// 				for _, fieldName := range conflictsWith {
-// 					fieldPath := forProviderField(fieldName)
+			if hasManaged {
+				for _, fieldName := range conflictsWith {
+					fieldPath := forProviderField(fieldName)
 
-// 					if err := DeleteOptionalField(paved, fieldPath); err != nil {
-// 						return errors.Wrapf(err, "could not delete field: %s", fieldName)
-// 					}
-// 				}
-// 			}
+					if err := DeleteOptionalField(paved, fieldPath); err != nil {
+						return errors.Wrapf(err, "could not delete field: %s", fieldName)
+					}
+				}
+			}
 
-// 			pavedData, err := paved.MarshalJSON()
-// 			if err != nil {
-// 				return errors.Wrapf(err, "could not marshal modified spec into JSON")
-// 			}
-// 			if err := json.Unmarshal(pavedData, mg); err != nil {
-// 				return errors.Wrapf(err, "could not unmarshal modified role spec into managed resource interface")
-// 			}
-// 			if err := client.Update(ctx, mg); err != nil {
-// 				return errors.Wrapf(err, "could not update managed resource")
-// 			}
-// 			return nil
-// 		})
-// 	}
-// }
+			pavedData, err := paved.MarshalJSON()
+			if err != nil {
+				return errors.Wrapf(err, "could not marshal modified spec into JSON")
+			}
+			if err := json.Unmarshal(pavedData, mg); err != nil {
+				return errors.Wrapf(err, "could not unmarshal modified role spec into managed resource interface")
+			}
+			if err := client.Update(ctx, mg); err != nil {
+				return errors.Wrapf(err, "could not update managed resource")
+			}
+			return nil
+		})
+	}
+}
 
 // Configure configures the propertymapping provider.
 func Configure(p *config.Provider) {

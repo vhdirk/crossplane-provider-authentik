@@ -28,4 +28,6 @@ metadata:
 spec:
   forProvider:
     name: test-app
-    protocolProvider: ${authentik_provider_proxy.name.id}
+    protocolProviderSelector:
+      matchLabels:
+        testing.upbound.io/example-name: name

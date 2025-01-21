@@ -9,7 +9,9 @@ metadata:
 spec:
   forProvider:
     name: example-app
-    protocolProvider: ${authentik_provider_oauth2.name.id}
+    protocolProviderSelector:
+      matchLabels:
+        testing.upbound.io/example-name: name
 
 ---
 

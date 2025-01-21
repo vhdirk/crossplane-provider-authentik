@@ -2,9 +2,20 @@ package base
 
 import (
 	"github.com/crossplane/upjet/pkg/config"
+
+	xpref "github.com/crossplane/crossplane-runtime/pkg/reference"
+	xpresource "github.com/crossplane/crossplane-runtime/pkg/resource"
 )
 
 const shortGroup = ""
+
+func ExtractParamPath(sourceAttr string, isObservation bool) xpref.ExtractValueFn {
+	return func(mr xpresource.Managed) string {
+		mr.GetObjectKind()
+
+		return ""
+	}
+}
 
 // Configure configures the base provider.
 func Configure(p *config.Provider) {
@@ -31,6 +42,12 @@ func Configure(p *config.Provider) {
 		// 	IgnoredFields: []string{"protocol_provider"},
 		// }
 
+		r.References["protocol_provider"] = config.Reference{
+			// Since any provider type could be referenced, pick any one
+			TerraformName: "authentik_provider_oauth2",
+			Extractor:     `github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)`,
+		}
+
 	})
 	p.AddResourceConfigurator("authentik_outpost", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
@@ -47,11 +64,6 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("authentik_flow", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "Flow"
-
-		// Add a field override for the "slug" field
-		r.References["slug"] = config.Reference{
-			Type: "string",
-		}
 
 		// // // Optionally, you can set it as optional or computed if required
 		// // r.UseFieldOverrides(map[string]config.FieldOverride{

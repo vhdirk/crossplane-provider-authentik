@@ -48,7 +48,17 @@ type ApplicationInitParameters struct {
 	PolicyEngineMode *string `json:"policyEngineMode,omitempty" tf:"policy_engine_mode,omitempty"`
 
 	// (Number)
+	// +crossplane:generate:reference:type=github.com/vhdirk/crossplane-provider-authentik/apis/provider/v1alpha1.OAuth2
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	ProtocolProvider *float64 `json:"protocolProvider,omitempty" tf:"protocol_provider,omitempty"`
+
+	// Reference to a OAuth2 in provider to populate protocolProvider.
+	// +kubebuilder:validation:Optional
+	ProtocolProviderRef *v1.Reference `json:"protocolProviderRef,omitempty" tf:"-"`
+
+	// Selector for a OAuth2 in provider to populate protocolProvider.
+	// +kubebuilder:validation:Optional
+	ProtocolProviderSelector *v1.Selector `json:"protocolProviderSelector,omitempty" tf:"-"`
 
 	// (String) Generated.
 	// Generated.
@@ -144,8 +154,18 @@ type ApplicationParameters struct {
 	PolicyEngineMode *string `json:"policyEngineMode,omitempty" tf:"policy_engine_mode,omitempty"`
 
 	// (Number)
+	// +crossplane:generate:reference:type=github.com/vhdirk/crossplane-provider-authentik/apis/provider/v1alpha1.OAuth2
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/pkg/resource.ExtractParamPath("id",true)
 	// +kubebuilder:validation:Optional
 	ProtocolProvider *float64 `json:"protocolProvider,omitempty" tf:"protocol_provider,omitempty"`
+
+	// Reference to a OAuth2 in provider to populate protocolProvider.
+	// +kubebuilder:validation:Optional
+	ProtocolProviderRef *v1.Reference `json:"protocolProviderRef,omitempty" tf:"-"`
+
+	// Selector for a OAuth2 in provider to populate protocolProvider.
+	// +kubebuilder:validation:Optional
+	ProtocolProviderSelector *v1.Selector `json:"protocolProviderSelector,omitempty" tf:"-"`
 
 	// (String) Generated.
 	// Generated.

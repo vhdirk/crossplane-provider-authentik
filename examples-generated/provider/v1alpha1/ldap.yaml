@@ -25,4 +25,6 @@ metadata:
 spec:
   forProvider:
     name: ldap-app
-    protocolProvider: ${authentik_provider_ldap.name.id}
+    protocolProviderSelector:
+      matchLabels:
+        testing.upbound.io/example-name: name
